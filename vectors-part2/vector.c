@@ -119,3 +119,33 @@ void vector_sort(Vector *v){
         }
     }
 }
+
+int vector_binary_search(Vector *v, data_type val){
+    int indice = -1,indice_max = v->size-1, indice_min = 0,indice_half;
+    vector_sort(v);
+    while((indice == -1)&&(indice_min<=indice_max)){
+        indice_half = (indice_max + indice_min)/2;
+        if(v->data[indice_half]>val){
+            indice_max = indice_half - 1;
+        }else if(v->data[indice_half]<val){
+            indice_min = indice_half + 1;
+        }else{
+            indice = indice_half;
+        }
+    }
+    return indice;
+}
+
+void vector_reverse(Vector *v){
+    vector_sort(v);
+    int trocas = 1, i, j;
+    for(i = 0; trocas != 0; i++){
+        trocas = 0;
+        for(j = 0; j < (v->size-1-i); j++){
+            if(v->data[j]<v->data[j+1]){
+                vector_swap(v,j,j+1);
+                trocas++;
+            }
+        }
+    }
+}

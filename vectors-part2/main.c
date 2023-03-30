@@ -6,24 +6,25 @@
 
 int main()
 {
-    int i, m, val;
+    int m, n, val;
 
     Vector *v;
 
     v = vector_construct();
 
-    scanf("%d", &m);
+    scanf("%d %d", &m, &n);
 
-    for (i = 0; i < m; i++)
+    for (int i = 0; i < m; i++)
     {
         scanf("%d", &val);
         vector_push_back(v, val);
     }
 
-    vector_sort(v);
-
-    for (i = 0; i < vector_size(v); i++)
-        printf("%d\n", vector_get(v, i));
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &val);
+        printf("%d\n", vector_binary_search(v, val));
+    }
 
     vector_destroy(v);
 
