@@ -1,6 +1,7 @@
 #include "vector.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 Vector *vector_construct(){
     Vector *v = (Vector *)calloc(1,sizeof(Vector));
@@ -148,4 +149,11 @@ void vector_reverse(Vector *v){
             }
         }
     }
+}
+
+double get_timestamp()
+{
+    struct timespec now;
+    timespec_get(&now, TIME_UTC);
+    return now.tv_sec + (((double)now.tv_nsec) / 1e9);
 }

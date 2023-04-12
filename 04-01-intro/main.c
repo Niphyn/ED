@@ -1,31 +1,23 @@
 #include <stdio.h>
 #include <string.h>
-
+#include <time.h>
+#include <stdlib.h>
 #include "vector.h"
 
 int main()
-{
-    int m, n, val;
+{  
+    srand(time(NULL));
 
-    Vector *v;
+    int x = rand();
+    
+    double start = get_timestamp(); 
 
-    v = vector_construct();
+    // trecho que queremos medir
 
-    scanf("%d %d", &m, &n);
+    double end = get_timestamp(); 
 
-    for (int i = 0; i < m; i++)
-    {
-        scanf("%d", &val);
-        vector_push_back(v, val);
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%d", &val);
-        printf("%d\n", vector_binary_search(v, val));
-    }
-
-    vector_destroy(v);
+    // tempo passado entre os dois pontos do código
+    double dt = (end - start);
 
     return 0;
 }

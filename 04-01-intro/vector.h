@@ -61,4 +61,6 @@ void vector_clear(Vector *v);
 // Libera a memoria alocada para o vetor
 void vector_destroy(Vector *v);
 
+double get_timestamp();
+
 #endif
